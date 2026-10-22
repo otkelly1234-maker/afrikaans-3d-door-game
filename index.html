@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afrikaans 3D Door Runner - Extreme Punishment Edition</title>
+  <title>Afrikaans "klein geloof" 3D Door Runner - Extreme Edition</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
@@ -28,12 +28,12 @@
     <div id="punishment-flash" class="pointer-events-none fixed inset-0 z-20 opacity-0 transition-opacity duration-150" style="background: radial-gradient(circle, transparent 40%, rgba(220, 38, 38, 0.75) 100%);"></div>
 
     <!-- Top HUD -->
-    <div class="relative z-10 p-3 md:p-5 flex flex-col gap-2.5 pointer-events-none">
-      <div class="flex flex-wrap items-center justify-between gap-3 max-w-5xl mx-auto w-full bg-[var(--card,#1e293b)]/90 backdrop-blur-md border border-[var(--border,#334155)] rounded-2xl px-4 py-2.5 shadow-lg pointer-events-auto">
+    <div class="relative z-10 p-3 md:p-5 flex flex-col gap-2 pointer-events-none">
+      <div class="flex flex-wrap items-center justify-between gap-3 max-w-5xl mx-auto w-full bg-[var(--card,#1e293b)]/90 backdrop-blur-md border border-[var(--border,#334155)] rounded-2xl px-4 py-2 shadow-lg pointer-events-auto">
         <div class="flex items-center gap-3 sm:gap-4">
           <div class="flex flex-col">
             <span class="text-xs uppercase tracking-wider text-[var(--muted-foreground,#94a3b8)] font-bold">Vraag / Question</span>
-            <span id="hud-q-num" class="text-lg sm:text-xl font-extrabold text-[var(--foreground,#f8fafc)]">1 / 30</span>
+            <span id="hud-q-num" class="text-lg sm:text-xl font-extrabold text-[var(--foreground,#f8fafc)]">1 / 40</span>
           </div>
           <div class="h-8 w-px bg-[var(--border,#334155)]"></div>
           <div class="flex flex-col">
@@ -52,8 +52,8 @@
           </div>
           <div class="h-8 w-px bg-[var(--border,#334155)] hidden md:block"></div>
           <div class="hidden md:flex flex-col">
-            <span class="text-xs uppercase tracking-wider text-[var(--muted-foreground,#94a3b8)] font-bold">Straf / Penalty</span>
-            <span id="hud-penalty" class="text-xs font-extrabold px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30">Geen (Normal)</span>
+            <span class="text-xs uppercase tracking-wider text-[var(--muted-foreground,#94a3b8)] font-bold">Gedig / Poem</span>
+            <span class="text-xs font-bold text-indigo-400">klein geloof</span>
           </div>
         </div>
 
@@ -65,7 +65,7 @@
               <span class="text-xs uppercase tracking-wider text-[var(--muted-foreground,#94a3b8)] font-bold">Tyd</span>
               <span id="hud-timer-text" class="text-base font-extrabold text-[var(--foreground,#f8fafc)] tabular-nums">20.0s</span>
             </div>
-            <div class="w-28 sm:w-40 h-2.5 bg-[var(--background,#0f172a)] rounded-full overflow-hidden border border-[var(--border,#334155)] mt-1">
+            <div class="w-28 sm:w-40 h-2 bg-[var(--background,#0f172a)] rounded-full overflow-hidden border border-[var(--border,#334155)] mt-1">
               <div id="hud-timer-bar" class="h-full bg-emerald-500 transition-all duration-75" style="width: 100%;"></div>
             </div>
           </div>
@@ -81,12 +81,12 @@
 
       <!-- Question Banner -->
       <div class="max-w-3xl mx-auto w-full text-center pointer-events-auto">
-        <div id="question-card" class="bg-[var(--card,#1e293b)]/95 backdrop-blur-md border-2 border-[var(--border,#334155)] rounded-2xl px-5 py-3 shadow-xl transition-transform duration-300">
+        <div id="question-card" class="bg-[var(--card,#1e293b)]/95 backdrop-blur-md border-2 border-[var(--border,#334155)] rounded-2xl px-5 py-2.5 shadow-xl transition-transform duration-300">
           <div id="question-badge" class="inline-block px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30 mb-1">
-            ⚠️ Verkeerde deur = -150 Punte, Deure Skud & Dodelike Lokval!
+            ⚠️ "klein geloof" Toets: Verkeerde deur = Dodelike Lokval & -150 Punte!
           </div>
-          <h1 id="question-text" class="text-xl sm:text-3xl font-black text-[var(--foreground,#f8fafc)] tracking-tight">
-            Wat is 'groeptaak' in Engels?
+          <h1 id="question-text" class="text-lg sm:text-2xl font-black text-[var(--foreground,#f8fafc)] tracking-tight">
+            What does "kabouter" mean in English? (line 1)
           </h1>
         </div>
       </div>
@@ -94,7 +94,7 @@
 
     <!-- Center Status Toast -->
     <div id="status-toast" class="relative z-30 pointer-events-none flex justify-center items-center my-auto opacity-0 transition-opacity duration-200 px-4">
-      <div id="status-toast-inner" class="px-6 py-3.5 rounded-2xl font-black text-xl sm:text-3xl shadow-2xl border-2 transform scale-95 transition-transform duration-200 text-center max-w-xl">
+      <div id="status-toast-inner" class="px-6 py-3.5 rounded-2xl font-black text-xl sm:text-2xl shadow-2xl border-2 transform scale-95 transition-transform duration-200 text-center max-w-xl">
       </div>
     </div>
 
@@ -104,19 +104,19 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="answer-buttons">
           <button onclick="selectDoor(0)" class="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--card,#1e293b)]/95 hover:bg-rose-500/15 border-2 border-rose-500/50 hover:border-rose-500 shadow-lg transition-all active:scale-95">
             <span class="absolute top-1.5 left-2.5 text-xs font-black px-2 py-0.5 rounded-md bg-rose-500 text-white">DEUR 1</span>
-            <span id="btn-ans-0" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Homework</span>
+            <span id="btn-ans-0" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Giant</span>
           </button>
           <button onclick="selectDoor(1)" class="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--card,#1e293b)]/95 hover:bg-blue-500/15 border-2 border-blue-500/50 hover:border-blue-500 shadow-lg transition-all active:scale-95">
             <span class="absolute top-1.5 left-2.5 text-xs font-black px-2 py-0.5 rounded-md bg-blue-500 text-white">DEUR 2</span>
-            <span id="btn-ans-1" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Reading test</span>
+            <span id="btn-ans-1" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Garden gnome / Elf</span>
           </button>
           <button onclick="selectDoor(2)" class="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--card,#1e293b)]/95 hover:bg-amber-500/15 border-2 border-amber-500/50 hover:border-amber-500 shadow-lg transition-all active:scale-95">
             <span class="absolute top-1.5 left-2.5 text-xs font-black px-2 py-0.5 rounded-md bg-amber-500 text-white">DEUR 3</span>
-            <span id="btn-ans-2" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Final exam</span>
+            <span id="btn-ans-2" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Ghost</span>
           </button>
           <button onclick="selectDoor(3)" class="group relative flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--card,#1e293b)]/95 hover:bg-emerald-500/15 border-2 border-emerald-500/50 hover:border-emerald-500 shadow-lg transition-all active:scale-95">
             <span class="absolute top-1.5 left-2.5 text-xs font-black px-2 py-0.5 rounded-md bg-emerald-500 text-white">DEUR 4</span>
-            <span id="btn-ans-3" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Group project</span>
+            <span id="btn-ans-3" class="mt-4 text-sm sm:text-base font-extrabold text-[var(--foreground,#f8fafc)] text-center line-clamp-2">Dragon</span>
           </button>
         </div>
         <div class="text-center text-xs text-[var(--muted-foreground,#94a3b8)] font-medium">
@@ -129,8 +129,8 @@
     <div id="end-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
       <div class="bg-[var(--card,#1e293b)] border-2 border-[var(--border,#334155)] rounded-3xl max-w-lg w-full p-6 sm:p-8 text-center shadow-2xl flex flex-col items-center gap-4">
         <div class="text-5xl">🏆</div>
-        <h2 class="text-3xl font-black text-[var(--foreground,#f8fafc)]">Uitstekend! Jy het oorleef!</h2>
-        <p class="text-sm text-[var(--muted-foreground,#94a3b8)]">Jy het al 30 Afrikaans-woordeskatdeure en dodelike lokvalle oorleef!</p>
+        <h2 class="text-3xl font-black text-[var(--foreground,#f8fafc)]">Uitstekend! "klein geloof" Bemeester!</h2>
+        <p class="text-sm text-[var(--muted-foreground,#94a3b8)]">Jy het al 40 woordeskatvrae oor Tanja Joubert se gedig suksesvol beantwoord!</p>
         <div class="grid grid-cols-3 gap-3 w-full my-2">
           <div class="p-3 rounded-2xl bg-[var(--background,#0f172a)] border border-[var(--border,#334155)]">
             <div class="text-xs text-[var(--muted-foreground,#94a3b8)] font-bold uppercase">Telling</div>
@@ -147,7 +147,7 @@
         </div>
         <div class="flex gap-3 w-full mt-2">
           <button onclick="restartGame(false)" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold shadow-lg transition">
-            Speel Weer (Volgorde)
+            Speel Weer (1 - 40)
           </button>
           <button onclick="restartGame(true)" class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg transition">
             Skud Vrae (Shuffle)
@@ -159,39 +159,52 @@
 
   <script>
     // ==========================================
-    // 1. ALL 30 QUESTIONS FROM USER CSV
+    // 1. ALL 40 QUESTIONS FROM "KLEIN GELOOF" POEM
     // ==========================================
     const RAW_QUESTIONS = [
-      { id: 1, q: "Wat is 'groeptaak' in Engels?", a: ["Homework", "Reading test", "Final exam", "Group project"], time: 20, correct: 3 },
-      { id: 2, q: "Wat is 'scholarship' in Afrikaans?", a: ["Boete", "Beurs", "Salaris", "Sakgeld"], time: 20, correct: 1 },
-      { id: 3, q: "Wat is 'kuif' in Engels?", a: ["Eyebrow", "Moustache", "Beard", "Fringe"], time: 20, correct: 3 },
-      { id: 4, q: "Wat is 'germs' in Afrikaans?", a: ["Pille", "Stof", "Kieme", "Seep"], time: 20, correct: 2 },
-      { id: 5, q: "Wat is 'stalletjie' in Engels?", a: ["Stall", "Kitchen", "Office", "Classroom"], time: 20, correct: 0 },
-      { id: 6, q: "Wat is 'witches' in Afrikaans?", a: ["Monsters", "Engele", "Hekse", "Spoke"], time: 20, correct: 2 },
-      { id: 7, q: "Wat is 'geraamte' in Engels?", a: ["Statue", "Shadow", "Skeleton", "Painting"], time: 20, correct: 2 },
-      { id: 8, q: "Wat is 'toffee apples' in Afrikaans?", a: ["Spookasem", "Sjokoladekoek", "Springmielies", "Toffieappels"], time: 20, correct: 3 },
-      { id: 9, q: "Wat is 'geweld' in Engels?", a: ["Kindness", "Silence", "Violence", "Laughter"], time: 20, correct: 2 },
-      { id: 10, q: "Wat is 'boxing ring' in Afrikaans?", a: ["Sokkerveld", "Tennisbaan", "Swembad", "Bokskryt"], time: 20, correct: 3 },
-      { id: 11, q: "Wat is 'troeteldiere' in Engels?", a: ["Insects", "Birds", "Pets", "Wild animals"], time: 20, correct: 2 },
-      { id: 12, q: "Wat is 'banner' in Afrikaans?", a: ["Banier", "Plakkaat", "Vlag", "Skildery"], time: 20, correct: 0 },
-      { id: 13, q: "Wat is 'roomysbussie' in Engels?", a: ["Fire truck", "Ice cream van", "School bus", "Police car"], time: 20, correct: 1 },
-      { id: 14, q: "Wat is 'strawberry syrup' in Afrikaans?", a: ["Aarbeistroop", "Tamatiesous", "Sjokoladesous", "Lemoensap"], time: 20, correct: 0 },
-      { id: 15, q: "Wat is 'kaalkop' in Engels?", a: ["Bald head", "Dark eyes", "Red beard", "Long hair"], time: 20, correct: 0 },
-      { id: 16, q: "Wat is 'scar' in Afrikaans?", a: ["Verband", "Bloukol", "Pleister", "Litteken"], time: 20, correct: 3 },
-      { id: 17, q: "Wat is 'skoolhoof' in Engels?", a: ["Principal", "Teacher", "Coach", "Secretary"], time: 20, correct: 0 },
-      { id: 18, q: "Wat is 'jackal' in Afrikaans?", a: ["Leeu", "Jakkals", "Wolf", "Tier"], time: 20, correct: 1 },
-      { id: 19, q: "Wat is 'pistoolskote' in Engels?", a: ["Thunder", "Gunshots", "Sirens", "Footsteps"], time: 20, correct: 1 },
-      { id: 20, q: "Wat is 'blood' in Afrikaans?", a: ["Bloed", "Water", "Sweet", "Trane"], time: 20, correct: 0 },
-      { id: 21, q: "Wat is 'gewonde' in Engels?", a: ["Wounded", "Angry", "Sleepy", "Healthy"], time: 20, correct: 0 },
-      { id: 22, q: "Wat is 'weapon' in Afrikaans?", a: ["Selfoon", "Sleutel", "Wapen", "Saklamp"], time: 20, correct: 2 },
-      { id: 23, q: "Wat is 'moord' in Engels?", a: ["Murder", "Accident", "Robbery", "Argument"], time: 20, correct: 0 },
-      { id: 24, q: "Wat is 'crook' in Afrikaans?", a: ["Vriend", "Buurman", "Held", "Skelm"], time: 20, correct: 3 },
-      { id: 25, q: "Wat is 'hekkiesatleet' in Engels?", a: ["Boxer", "Swimmer", "Hurdler", "Cyclist"], time: 20, correct: 2 },
-      { id: 26, q: "Wat is 'treehouse' in Afrikaans?", a: ["Hondhok", "Boomhuis", "Woonstel", "Motorhuis"], time: 20, correct: 1 },
-      { id: 27, q: "Wat is 'wegkruip' in Engels?", a: ["Search", "Hide", "Run away", "Shout"], time: 20, correct: 1 },
-      { id: 28, q: "Wat is 'ladder' in Afrikaans?", a: ["Trappe", "Tou", "Leertjie", "Brug"], time: 20, correct: 2 },
-      { id: 29, q: "Wat is 'buurtwag' in Engels?", a: ["Neighbourhood watch", "Street gang", "Traffic police", "Fire brigade"], time: 20, correct: 0 },
-      { id: 30, q: "Wat is 'garlic' in Afrikaans?", a: ["Uie", "Peper", "Sout", "Knoffel"], time: 20, correct: 3 }
+      // Part 1 (1 - 20)
+      { id: 1, q: 'What does "kabouter" mean in English? (line 1)', a: ['Giant', 'Garden gnome / Elf', 'Ghost', 'Dragon'], time: 20, correct: 1 },
+      { id: 2, q: 'What does "gesteel" mean in English? (line 1)', a: ['Stolen', 'Broken', 'Bought', 'Lost'], time: 20, correct: 0 },
+      { id: 3, q: 'What does "tuin" mean in English? (line 1)', a: ['House', 'Garden', 'Street', 'Room'], time: 20, correct: 1 },
+      { id: 4, q: 'Who is "Kersvader" in line 2?', a: ['Tooth Fairy', 'Sandman', 'Santa Claus', 'Easter Bunny'], time: 20, correct: 2 },
+      { id: 5, q: 'What does "nooit" mean in line 2?', a: ['Always', 'Never', 'Sometimes', 'Soon'], time: 20, correct: 1 },
+      { id: 6, q: 'What does "meer" mean in line 2 ("nooit meer")?', a: ['More / Again', 'Less', 'Much', 'Far'], time: 20, correct: 0 },
+      { id: 7, q: 'What is a "slee" in English? (line 2)', a: ['Sleigh / Sled', 'Ship', 'Bicycle', 'Cart'], time: 20, correct: 0 },
+      { id: 8, q: 'What is "tandemuis" in English? (line 3)', a: ['Field mouse', 'Tooth fairy / mouse', 'House rat', 'Hamster'], time: 20, correct: 1 },
+      { id: 9, q: 'What does "net" mean in line 3 ("was net my ma")?', a: ['Only / Just', 'Clean', 'Always', 'Never'], time: 20, correct: 0 },
+      { id: 10, q: 'What does "ma" mean in line 3?', a: ['Grandmother', 'Mother', 'Sister', 'Aunt'], time: 20, correct: 1 },
+      { id: 11, q: 'What does "paddaprinse" mean? (line 4)', a: ['Prince charming', 'Toad / Frog princes', 'Green frogs', 'Flying lizards'], time: 20, correct: 1 },
+      { id: 12, q: 'What does "amfibieë" mean? (line 4)', a: ['Reptiles', 'Mammals', 'Amphibians', 'Insects'], time: 20, correct: 2 },
+      { id: 13, q: 'What does "man" mean in line 5?', a: ['Man', 'Boy', 'Uncle', 'Hero'], time: 20, correct: 0 },
+      { id: 14, q: 'What is "maan" in line 5?', a: ['Sun', 'Moon', 'Star', 'Cloud'], time: 20, correct: 1 },
+      { id: 15, q: 'What does "melkskommelweg" mean? (line 6)', a: ['Milky Way', 'Milkshake road', 'Cow path', 'Dessert lane'], time: 20, correct: 0 },
+      { id: 16, q: 'What does "versuur" mean? (line 6)', a: ['Sweetened', 'Turned sour', 'Spilled', 'Melted'], time: 20, correct: 1 },
+      { id: 17, q: 'What does "drake" mean in English? (line 7)', a: ['Dragons', 'Ducks', 'Snakes', 'Monsters'], time: 20, correct: 0 },
+      { id: 18, q: 'What is a "dinosourus"? (line 7)', a: ['Dinosaur', 'Crocodile', 'Dragon', 'Monster'], time: 20, correct: 0 },
+      { id: 19, q: 'What does "lugkastele" mean? (line 8)', a: ['Sandcastles', 'Castles in the air', 'Cloud formations', 'Skyscrapers'], time: 20, correct: 1 },
+      { id: 20, q: 'What is "argitektuur" in line 8?', a: ['Architecture', 'Art', 'Archaeology', 'Engineering'], time: 20, correct: 0 },
+
+      // Part 2 (21 - 40)
+      { id: 21, q: 'What does "al" mean in line 9 ("al my sprokies")?', a: ['None', 'All / Every', 'Some', 'One'], time: 20, correct: 1 },
+      { id: 22, q: 'What does "sprokies" mean in line 9?', a: ['History books', 'Fairy tales', 'Poems', 'Nightmares'], time: 20, correct: 1 },
+      { id: 23, q: 'What does "brand gesteek" mean? (line 9)', a: ['Set on fire / Burnt', 'Locked away', 'Thrown away', 'Hidden'], time: 20, correct: 0 },
+      { id: 24, q: 'What is "Realisme" in line 10?', a: ['Realism', 'Reality TV', 'Romance', 'Reason'], time: 20, correct: 0 },
+      { id: 25, q: 'What does "Feite" mean in line 10?', a: ['Fictions', 'Facts', 'Fears', 'Faces'], time: 20, correct: 1 },
+      { id: 26, q: 'What is the English meaning of "Wetenskap"?', a: ['History', 'Science', 'Mathematics', 'Geography'], time: 20, correct: 1 },
+      { id: 27, q: 'What does "kan" mean in line 11 ("EK KAN BEWYS")?', a: ['Must', 'Can / Am able to', 'Will', 'Should'], time: 20, correct: 1 },
+      { id: 28, q: 'What does "bewys" mean in line 11?', a: ['Prove', 'Believe', 'Guess', 'Know'], time: 20, correct: 0 },
+      { id: 29, q: 'What does "maar" mean in line 12?', a: ['Because', 'But', 'More', 'Never'], time: 20, correct: 1 },
+      { id: 30, q: 'What does "waarom" mean in lines 12 & 14?', a: ['Where', 'When', 'Why', 'Who'], time: 20, correct: 2 },
+      { id: 31, q: 'What does "slaap" mean in line 12?', a: ['Sleep', 'Wake', 'Walk', 'Stay'], time: 20, correct: 0 },
+      { id: 32, q: 'What does "lig" mean in line 12?', a: ['Light', 'Line', 'Life', 'Latch'], time: 20, correct: 0 },
+      { id: 33, q: 'What does "nog" mean in line 12 ("nog aan")?', a: ['Not', 'Still / Yet', 'Now', 'Never'], time: 20, correct: 1 },
+      { id: 34, q: 'What is the English meaning of "stoei"? (line 13)', a: ['Play', 'Wrestle / Fight', 'Hide', 'Run'], time: 20, correct: 1 },
+      { id: 35, q: 'What are "monsters" in line 13?', a: ['Monsters', 'Mice', 'Memories', 'Mothers'], time: 20, correct: 0 },
+      { id: 36, q: 'What does "onder" mean in line 13 ("onder my bed")?', a: ['Over', 'Under / Beneath', 'On', 'Beside'], time: 20, correct: 1 },
+      { id: 37, q: 'What does "bed" mean in line 13?', a: ['Bath', 'Bed', 'Bench', 'Box'], time: 20, correct: 1 },
+      { id: 38, q: 'What does "bid" mean in line 14 ("waarom bid ek")?', a: ['Pray', 'Beg', 'Bid', 'Bite'], time: 20, correct: 0 },
+      { id: 39, q: 'What does "elke" mean in line 14 ("elke dag")?', a: ['Each / Every', 'Early', 'Empty', 'End'], time: 20, correct: 0 },
+      { id: 40, q: 'What is a "donkie" in line 15?', a: ['Horse', 'Donkey', 'Camel', 'Mule'], time: 20, correct: 1 }
     ];
 
     // ==========================================
@@ -293,7 +306,6 @@
         noise.start(now);
         noise.stop(now + 0.9);
       } else if (type === 'lightning') {
-        // High voltage buzz + crack
         for (let k = 0; k < 6; k++) {
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
@@ -307,7 +319,6 @@
           osc.stop(now + k * 0.12 + 0.11);
         }
       } else if (type === 'anvil') {
-        // Falling whistle then metallic clang!
         const whistle = audioCtx.createOscillator();
         const wGain = audioCtx.createGain();
         whistle.type = 'sine';
@@ -320,7 +331,6 @@
         whistle.start(now);
         whistle.stop(now + 0.35);
 
-        // Heavy metallic clang at t + 0.35
         const clang = audioCtx.createOscillator();
         const cGain = audioCtx.createGain();
         clang.type = 'square';
@@ -333,7 +343,6 @@
         clang.start(now + 0.35);
         clang.stop(now + 0.85);
       } else if (type === 'acid') {
-        // Falling scream + bubbling acid hiss
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sawtooth';
@@ -346,7 +355,6 @@
         osc.start(now);
         osc.stop(now + 0.7);
       } else if (type === 'laser') {
-        // Sci-fi orbital laser beam
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sawtooth';
@@ -410,16 +418,12 @@
     let maxTime = 20;
     let lastDeathTypeIndex = -1;
 
-    // States:
-    // 'IDLE', 'RUNNING_TO_DOOR', 'SUCCESS_ENTER', 'RESPAWNING',
-    // 'DYING_EXPLODE', 'DYING_FIRE', 'DYING_LIGHTNING', 'DYING_ANVIL', 'DYING_ACID', 'DYING_LASER'
     let gameState = 'IDLE';
     let stateTimer = 0;
     let selectedDoor = -1;
     let hoveredDoor = -1;
     let screenShake = 0;
 
-    // 3D Stickman Entity
     const stickman = {
       x: 0,
       y: 0,
@@ -436,17 +440,15 @@
       ragdollParts: []
     };
 
-    // Dynamic Hazard Props (Anvil, Trapdoor Pit, Laser, Lightning)
     const hazardProps = {
       anvilY: 600,
       anvilActive: false,
-      pitOpen: 0, // 0 to 1
+      pitOpen: 0,
       pitDoorIdx: -1,
       laserActive: false,
       lightningBolts: []
     };
 
-    // 4 Doors State
     const doors = [0, 1, 2, 3].map(i => ({
       index: i,
       x: DOOR_X[i],
@@ -460,9 +462,6 @@
 
     let particles = [];
 
-    // ==========================================
-    // 4. 3D PERSPECTIVE PROJECTION
-    // ==========================================
     const CAMERA = {
       x: 0,
       y: 195,
@@ -500,9 +499,6 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // ==========================================
-    // 5. QUESTION, PUNISHMENTS & HUD MANAGEMENT
-    // ==========================================
     function cloneQuestions(rawList) {
       return rawList.map(item => ({
         id: item.id,
@@ -513,7 +509,6 @@
       }));
     }
 
-    // Punishment helper: Shuffle the 4 door options so the player can't just guess by elimination!
     function shuffleCurrentQuestionDoors() {
       const q = questions[currentQIndex];
       if (!q) return;
@@ -549,15 +544,10 @@
     }
 
     function updatePenaltyBadge() {
-      const penaltyEl = document.getElementById('hud-penalty');
       const speedBadge = document.getElementById('hud-speed-badge');
       if (wrongAttemptsOnCurrentQ === 0) {
-        penaltyEl.textContent = 'Geen (Normal)';
-        penaltyEl.className = 'text-xs font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
         speedBadge.classList.add('hidden');
       } else {
-        penaltyEl.textContent = `Straftyd x${wrongAttemptsOnCurrentQ} (Deure Geskud!)`;
-        penaltyEl.className = 'text-xs font-extrabold px-2 py-0.5 rounded bg-rose-500/25 text-rose-400 border border-rose-500/40 animate-pulse';
         speedBadge.classList.remove('hidden');
       }
     }
@@ -599,9 +589,9 @@
       const inner = document.getElementById('status-toast-inner');
       inner.innerHTML = `<div>${title}</div><div class="text-xs sm:text-sm font-bold opacity-95 mt-1">${subtitle || ''}</div>`;
       if (isSuccess) {
-        inner.className = 'px-6 py-3.5 rounded-2xl font-black text-xl sm:text-3xl shadow-2xl border-2 bg-emerald-600/95 text-white border-emerald-300 transform scale-100 transition-transform duration-200 text-center max-w-xl';
+        inner.className = 'px-6 py-3.5 rounded-2xl font-black text-xl sm:text-2xl shadow-2xl border-2 bg-emerald-600/95 text-white border-emerald-300 transform scale-100 transition-transform duration-200 text-center max-w-xl';
       } else {
-        inner.className = 'px-6 py-3.5 rounded-2xl font-black text-xl sm:text-3xl shadow-2xl border-2 bg-rose-600/95 text-white border-rose-300 transform scale-100 transition-transform duration-200 text-center max-w-xl';
+        inner.className = 'px-6 py-3.5 rounded-2xl font-black text-xl sm:text-2xl shadow-2xl border-2 bg-rose-600/95 text-white border-rose-300 transform scale-100 transition-transform duration-200 text-center max-w-xl';
       }
       toast.style.opacity = '1';
       if (toastTimeout) clearTimeout(toastTimeout);
@@ -636,9 +626,6 @@
       loadQuestion(0);
     }
 
-    // ==========================================
-    // 6. 6 UNIQUE BRUTAL STICKMAN DEATH ANIMATIONS
-    // ==========================================
     function resetStickmanToSpawn() {
       stickman.x = 0;
       stickman.y = 0;
@@ -671,10 +658,7 @@
       playSound('respawn');
 
       if (wasPunished) {
-        // Apply harsher punishments on respawn:
-        // 1. Shuffle door positions so the player has to actually read the words again!
         shuffleCurrentQuestionDoors();
-        // 2. Cut timer down on repeated mistakes (minimum 8 seconds)
         const baseQTime = questions[currentQIndex] ? questions[currentQIndex].time : 20;
         maxTime = Math.max(8, baseQTime - wrongAttemptsOnCurrentQ * 4);
         timeRemaining = maxTime;
@@ -702,7 +686,6 @@
       }
     }
 
-    // DEATH 1: TNT Ragdoll Disintegration
     function triggerDeathExplode(x, y, z) {
       screenShake = 30;
       playSound('explosion');
@@ -743,7 +726,6 @@
       stateTimer = 1.75;
     }
 
-    // DEATH 2: Hellfire Flamethrower Inferno
     function triggerDeathFire() {
       screenShake = 16;
       playSound('fire');
@@ -754,7 +736,6 @@
       stateTimer = 1.9;
     }
 
-    // DEATH 3: 50,000V High-Voltage Electro-Skeleton X-Ray
     function triggerDeathLightning() {
       screenShake = 22;
       playSound('lightning');
@@ -764,7 +745,6 @@
       stateTimer = 1.75;
     }
 
-    // DEATH 4: 100-Ton Falling Anvil Crush
     function triggerDeathAnvil() {
       playSound('anvil');
       hazardProps.anvilActive = true;
@@ -773,7 +753,6 @@
       stateTimer = 1.85;
     }
 
-    // DEATH 5: Toxic Acid / Lava Trapdoor Pit
     function triggerDeathAcid(doorIdx) {
       screenShake = 14;
       playSound('acid');
@@ -785,7 +764,6 @@
       stateTimer = 1.85;
     }
 
-    // DEATH 6: Giant Orbital Laser Vaporizer
     function triggerDeathLaser() {
       screenShake = 25;
       playSound('laser');
@@ -816,9 +794,6 @@
       }
     }
 
-    // ==========================================
-    // 7. PLAYER INTERACTION
-    // ==========================================
     function selectDoor(doorIndex) {
       if (gameState !== 'IDLE') return;
       initAudio();
@@ -863,9 +838,6 @@
       }
     });
 
-    // ==========================================
-    // 8. GAME LOOP & PHYSICS UPDATE
-    // ==========================================
     let lastTime = performance.now();
     let stepSoundCooldown = 0;
 
@@ -874,7 +846,7 @@
       streak = 0;
       wrongAttemptsOnCurrentQ++;
       const pointPenalty = 150 + (wrongAttemptsOnCurrentQ - 1) * 50;
-      score -= pointPenalty; // Can go negative!
+      score -= pointPenalty;
       flashPunishmentScreen();
       updateHUD();
       return pointPenalty;
@@ -923,7 +895,6 @@
         }
       }
 
-      // Door swinging animation
       for (let i = 0; i < 4; i++) {
         if (i === selectedDoor && gameState !== 'IDLE' && gameState !== 'RUNNING_TO_DOOR') {
           doors[i].openAngle = Math.min(1, doors[i].openAngle + dt * 5.5);
@@ -932,7 +903,6 @@
         }
       }
 
-      // Correct Door State
       if (gameState === 'SUCCESS_ENTER') {
         stateTimer -= dt;
         stickman.z += 220 * dt;
@@ -944,7 +914,6 @@
         }
       }
 
-      // 1. Update Explosion Death
       if (gameState === 'DYING_EXPLODE') {
         stateTimer -= dt;
         stickman.ragdollParts.forEach(p => {
@@ -966,7 +935,6 @@
         }
       }
 
-      // 2. Update Fire Death
       if (gameState === 'DYING_FIRE') {
         stateTimer -= dt;
         stickman.walkPhase += dt * 36;
@@ -999,14 +967,11 @@
         }
       }
 
-      // 3. Update Lightning Electrocution Death
       if (gameState === 'DYING_LIGHTNING') {
         stateTimer -= dt;
-        // Rapid jitter in place
         stickman.x = DOOR_X[selectedDoor] + (Math.random() - 0.5) * 26;
         stickman.y = Math.abs(Math.sin(stateTimer * 40)) * 22;
 
-        // Generate jagged 3D lightning bolts from sky to stickman
         hazardProps.lightningBolts = [];
         for (let b = 0; b < 2; b++) {
           const bolt = [];
@@ -1014,18 +979,13 @@
           let curY = 420;
           const steps = 8;
           for (let s = 0; s <= steps; s++) {
-            bolt.push({
-              x: curX,
-              y: curY,
-              z: stickman.z
-            });
+            bolt.push({ x: curX, y: curY, z: stickman.z });
             curX = stickman.x + (Math.random() - 0.5) * 55;
             curY -= 420 / steps;
           }
           hazardProps.lightningBolts.push(bolt);
         }
 
-        // Electric sparks
         for (let i = 0; i < 3; i++) {
           particles.push({
             x: stickman.x + (Math.random() - 0.5) * 30,
@@ -1055,17 +1015,14 @@
         }
       }
 
-      // 4. Update 100-Ton Anvil Crush Death
       if (gameState === 'DYING_ANVIL') {
         stateTimer -= dt;
         if (hazardProps.anvilY > 0) {
           hazardProps.anvilY = Math.max(0, hazardProps.anvilY - 1350 * dt);
           if (hazardProps.anvilY === 0) {
-            // SQUASH! Flatten the stickman into a pancake!
             screenShake = 34;
             stickman.scaleY = 0.07;
             stickman.scaleX = 2.4;
-            // Dust shockwave ring
             for (let i = 0; i < 45; i++) {
               const ang = (i / 45) * Math.PI * 2;
               const spd = 120 + Math.random() * 180;
@@ -1092,14 +1049,11 @@
         }
       }
 
-      // 5. Update Toxic Acid Pit Trapdoor Death
       if (gameState === 'DYING_ACID') {
         stateTimer -= dt;
-        // Stickman sinks down into the glowing green acid pit
         stickman.y -= 135 * dt;
         stickman.walkPhase += dt * 35;
 
-        // Green toxic bubbles & splash particles rising from pit
         for (let i = 0; i < 4; i++) {
           particles.push({
             x: DOOR_X[selectedDoor] + (Math.random() - 0.5) * 85,
@@ -1125,13 +1079,11 @@
         }
       }
 
-      // 6. Update Orbital Laser Vaporizer Death
       if (gameState === 'DYING_LASER') {
         stateTimer -= dt;
         stickman.scaleX = Math.max(0.05, stickman.scaleX - dt * 0.75);
-        stickman.y += dt * 35; // Float up slightly while disintegrating
+        stickman.y += dt * 35;
 
-        // Rising plasma ash particles
         for (let i = 0; i < 5; i++) {
           particles.push({
             x: stickman.x + (Math.random() - 0.5) * 50,
@@ -1157,7 +1109,6 @@
         }
       }
 
-      // Respawning drop-in animation
       if (gameState === 'RESPAWNING') {
         stateTimer -= dt;
         stickman.y = Math.max(0, stickman.y - 450 * dt);
@@ -1167,7 +1118,6 @@
         }
       }
 
-      // Update 3D particles
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.life -= dt;
@@ -1192,7 +1142,6 @@
     function evaluateDoorChoice(doorIdx) {
       const q = questions[currentQIndex];
       if (doorIdx === q.correct) {
-        // CORRECT ANSWER!
         doors[doorIdx].trapState = 'correct';
         const timeBonus = Math.ceil(timeRemaining * 5);
         const earned = 100 + timeBonus + streak * 25;
@@ -1206,10 +1155,8 @@
         gameState = 'SUCCESS_ENTER';
         stateTimer = 1.05;
       } else {
-        // WRONG ANSWER! Apply harsh punishment + pick 1 of 6 brutal deaths!
         const lostPoints = applyPunishmentPenalties();
 
-        // Pick a death animation (avoiding repeating the exact same one twice in a row)
         const deathTypes = ['explode', 'fire', 'lightning', 'anvil', 'acid', 'laser'];
         let pickIdx = Math.floor(Math.random() * deathTypes.length);
         if (pickIdx === lastDeathTypeIndex) {
@@ -1248,14 +1195,10 @@
       }
     }
 
-    // ==========================================
-    // 9. 3D SCENE & STICKMAN RENDERING
-    // ==========================================
     function drawScene() {
       const isLight = document.documentElement.classList.contains('light');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // 1. Background Sky / Arena Gradient
       const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.6);
       if (gameState === 'DYING_LIGHTNING' && Math.random() > 0.4) {
         skyGrad.addColorStop(0, '#38bdf8');
@@ -1270,20 +1213,16 @@
       ctx.fillStyle = skyGrad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // 2. 3D Floor Corridor & 4 Colored Lanes
       drawFloorAndLanes(isLight);
 
-      // 3. Draw Acid Pit Trapdoor on the floor if active
       if (hazardProps.pitOpen > 0 && hazardProps.pitDoorIdx >= 0) {
         drawAcidPit3D(DOOR_X[hazardProps.pitDoorIdx], DOOR_Z - 38);
       }
 
-      // 4. Draw the 4 Doors along the Back Wall
       for (let i = 0; i < 4; i++) {
         draw3DDoor(doors[i], i === hoveredDoor, isLight);
       }
 
-      // 5. Respawn Teleport Beam
       if (gameState === 'RESPAWNING') {
         const base = project3D(0, 0, START_Z);
         const top = project3D(0, 320, START_Z);
@@ -1296,10 +1235,8 @@
         ctx.fillRect(base.x - bw / 2, top.y, bw, base.y - top.y);
       }
 
-      // 6. Orbital Laser Beam (if active)
       if (hazardProps.laserActive) {
         const base = project3D(stickman.x, 0, stickman.z);
-        const top = project3D(stickman.x, 520, stickman.z);
         const bw = (70 + Math.sin(performance.now() * 0.05) * 20) * base.scale;
         ctx.save();
         const laserGrad = ctx.createLinearGradient(base.x - bw / 2, 0, base.x + bw / 2, 0);
@@ -1313,24 +1250,20 @@
         ctx.restore();
       }
 
-      // 7. Draw 3D Stickman (or Ragdoll parts if exploded)
       if (stickman.visible) {
         draw3DStickman(stickman);
       } else if (stickman.ragdollParts.length > 0) {
         drawRagdollParts(stickman.ragdollParts);
       }
 
-      // 8. Draw 100-Ton Anvil if active
       if (hazardProps.anvilActive) {
         draw3DAnvil(stickman.x, hazardProps.anvilY, stickman.z);
       }
 
-      // 9. Draw High-Voltage Lightning Bolts if active
       if (gameState === 'DYING_LIGHTNING' && hazardProps.lightningBolts.length > 0) {
         drawLightningBolts(hazardProps.lightningBolts);
       }
 
-      // 10. Draw 3D Particles sorted back-to-front
       const sortedParticles = [...particles].sort((a, b) => b.z - a.z);
       for (const p of sortedParticles) {
         const proj = project3D(p.x, p.y, p.z);
@@ -1354,7 +1287,6 @@
       const p4 = project3D(wx - hw, 0, wz + hd);
 
       ctx.save();
-      // Glowing green toxic pool
       ctx.fillStyle = '#4d7c0f';
       ctx.strokeStyle = '#a3e635';
       ctx.lineWidth = 4;
@@ -1367,7 +1299,6 @@
       ctx.fill();
       ctx.stroke();
 
-      // Inner bright core
       const c1 = project3D(wx - hw * 0.7, 0, wz - hd * 0.6);
       const c2 = project3D(wx + hw * 0.7, 0, wz - hd * 0.6);
       const c3 = project3D(wx + hw * 0.7, 0, wz + hd * 0.6);
@@ -1391,17 +1322,11 @@
 
       ctx.save();
       ctx.translate(baseP.x, baseP.y);
-
-      // Heavy iron anvil silhouette
       ctx.fillStyle = '#1e293b';
       ctx.strokeStyle = '#64748b';
       ctx.lineWidth = 3;
-
-      // Base foot
       ctx.fillRect(-w * 0.42, -h * 0.25, w * 0.84, h * 0.25);
-      // Waist
       ctx.fillRect(-w * 0.26, -h * 0.6, w * 0.52, h * 0.35);
-      // Top horn + block
       ctx.beginPath();
       ctx.moveTo(-w * 0.62, -h * 0.85);
       ctx.lineTo(w * 0.55, -h * 0.95);
@@ -1411,7 +1336,6 @@
       ctx.fill();
       ctx.stroke();
 
-      // "100 TON" label in white stencil
       ctx.fillStyle = '#f8fafc';
       ctx.font = `900 ${Math.max(10, Math.round(16 * s))}px sans-serif`;
       ctx.textAlign = 'center';
@@ -1667,7 +1591,6 @@
       const sx = s.scaleX;
       const sy = s.scaleY;
 
-      // Ground Shadow
       if (s.y >= -10) {
         const shadowP = project3D(bx, 0, bz);
         ctx.save();
@@ -1678,7 +1601,6 @@
         ctx.restore();
       }
 
-      // Compute 3D Skeleton Joints scaled by (sx, sy)
       const pelvis = { x: bx, y: by + 44 * sy, z: bz };
       const neck   = { x: bx, y: by + 86 * sy, z: bz };
       const head   = { x: bx, y: by + 106 * sy, z: bz };
@@ -1701,7 +1623,6 @@
         elbowR = { x: bx + 19 * sx, y: by + 70 * sy, z: bz + swing * 10 };
       }
 
-      // Flashing X-Ray Skeleton mode when electrocuted!
       const isXrayFrame = s.electrocuted && (Math.floor(performance.now() / 45) % 2 === 0);
 
       let mainColor = '#38bdf8';
@@ -1723,7 +1644,6 @@
       }
 
       function drawLimb3D(p1, p2, thickness) {
-        // Clip limbs below floor if sinking into the acid pit
         const cp1 = { x: p1.x, y: Math.max(0, p1.y), z: p1.z };
         const cp2 = { x: p2.x, y: Math.max(0, p2.y), z: p2.z };
         if (p1.y < 0 && p2.y < 0) return;
